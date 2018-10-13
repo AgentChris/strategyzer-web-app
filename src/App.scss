@@ -53,6 +53,7 @@
   margin-top: 10px;
   overflow-y: auto;
   outline: none;
+  box-sizing: border-box;
   height: calc(100% - 50px);
   &:hover {
     border: .0008em solid rgba(0, 0, 0, 0.5);
@@ -64,6 +65,8 @@ $medium-screen-row-height: 300px;
 $small-screen-row-height: 200px;
 $medium-screen-width: 1024px;
 $small-screen-width: 650px;
+$max-width-screen: 1300px;
+
 body {
   background: #EEEEEF;
   padding: 50px 20px;
@@ -74,7 +77,7 @@ body {
   justify-content: flex-end;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1300px;
+  max-width: $max-width-screen;
 }
 
 .header-container {
@@ -129,7 +132,7 @@ body {
 .container {
   background: #fff;
   border: 5px solid #000;
-  max-width: 1300px;
+  max-width: $max-width-screen;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -137,6 +140,34 @@ body {
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(3, $large-screen-row-height);
   grid-template-areas: "key-partners key-partners key-activities key-activities value-proposition value-proposition customer-relationship customer-relationship customer-segments customer-segments" "key-partners key-partners key-resources key-resources value-proposition value-proposition channels channels customer-segments customer-segments" "cost-structure cost-structure cost-structure cost-structure cost-structure revenue-streams revenue-streams revenue-streams revenue-streams revenue-streams";
+}
+
+.save-section {
+  max-width: $max-width-screen;
+  margin: 0 auto;
+}
+
+.btn-save {
+  display: block;
+  margin: 50px auto;
+  background: #000;
+  color: #fff;
+  font-size: 24px;
+  padding: 10px 50px;
+  /* Safari */
+  transition-duration: 0.4s;
+}
+
+.btn-save:hover {
+  background: rgba(0, 0, 0, 0.51);
+}
+
+.save-url-input {
+  width: 100%;
+  margin: 5px auto;
+  font-size: 15px;
+  display: block;
+  height: 30px;
 }
 
 @media (max-width: $medium-screen-width) {
@@ -148,7 +179,7 @@ body {
   .header {
     flex-direction: column;
   }
-  .header-input{
+  .header-input {
   }
   .header-container {
     margin-left: -10px;
@@ -172,4 +203,16 @@ body {
     grid-template-rows: $small-screen-row-height*2 repeat(2, $small-screen-row-height) 2*$small-screen-row-height repeat(2, $small-screen-row-height) repeat(3, 2*$small-screen-row-height);
     grid-template-areas: "key-partners" "key-activities" "key-resources" "value-proposition" "customer-relationship" "channels" "customer-segments" "cost-structure" "revenue-streams";
   }
+}
+
+.contact-link-container {
+  margin-top: 50px;
+}
+
+.contact-link, .contact-link:visited {
+  color: black;
+}
+
+.contact-link:hover {
+  color: rgba(0, 0, 0, 0.51);
 }
