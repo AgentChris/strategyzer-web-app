@@ -194,6 +194,10 @@ body {
   }
 }
 
+.learn-more{
+  float: right;
+}
+
 @media (max-width: $small-screen-width) {
   .header-container {
     flex-direction: column;
@@ -202,6 +206,9 @@ body {
     grid-template-columns: 100%;
     grid-template-rows: $small-screen-row-height*2 repeat(2, $small-screen-row-height) 2*$small-screen-row-height repeat(2, $small-screen-row-height) repeat(3, 2*$small-screen-row-height);
     grid-template-areas: "key-partners" "key-activities" "key-resources" "value-proposition" "customer-relationship" "channels" "customer-segments" "cost-structure" "revenue-streams";
+  }
+  .learn-more{
+    float: left;
   }
 }
 

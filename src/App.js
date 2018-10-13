@@ -116,7 +116,7 @@ class App extends Component {
     } = this.state;
     return (
       <div className="App">
-        <ReactTooltip place="bottom" type="dark" effect="float" multiline/>
+        <ReactTooltip place="bottom" type="dark" effect="float" multiline />
         <section className="header">
           <h1 className="title">The Business Model Canvas</h1>
           <div className="header-container">
@@ -184,47 +184,52 @@ class App extends Component {
           </div>
           <div className="canvas-item channels">
             <span>Channels</span>
-            <i className="fas fa-shuttle-van" data-tip={CANVAS_ITEM_DATA.channels}/>
-              <ContentEditable className="content-info" onChange={(event) => {
+            <i className="fas fa-shuttle-van" data-tip={CANVAS_ITEM_DATA.channels} />
+            <ContentEditable className="content-info" onChange={(event) => {
               this.changeData("channels", event);
             }} html={channels} />
-              </div>
-              <div className="canvas-item value-proposition">
-              <span>Value Proposition</span>
-              <i className="fas fa-gift" data-tip={CANVAS_ITEM_DATA.value_proposition}/>
-              <ContentEditable className="content-info" onChange={(event) => {
+          </div>
+          <div className="canvas-item value-proposition">
+            <span>Value Proposition</span>
+            <i className="fas fa-gift" data-tip={CANVAS_ITEM_DATA.value_proposition} />
+            <ContentEditable className="content-info" onChange={(event) => {
               this.changeData("value_proposition", event);
             }} html={value_proposition} />
-              </div>
-              <div className="canvas-item cost-structure">
-              <span>Cost Structure</span>
-              <i className="fas fa-tags" data-tip={CANVAS_ITEM_DATA.cost_structure}/>
-              <ContentEditable className="content-info" onChange={(event) => {
+          </div>
+          <div className="canvas-item cost-structure">
+            <span>Cost Structure</span>
+            <i className="fas fa-tags" data-tip={CANVAS_ITEM_DATA.cost_structure} />
+            <ContentEditable className="content-info" onChange={(event) => {
               this.changeData("cost_structure", event);
             }} html={cost_structure} />
-              </div>
-              <div className="canvas-item revenue-streams">
-              <span>Revenue Streams</span>
-              <i className="fas fa-money-bill-wave" data-tip={CANVAS_ITEM_DATA.revenue_stream}/>
-              <ContentEditable className="content-info" onChange={(event) => {
+          </div>
+          <div className="canvas-item revenue-streams">
+            <span>Revenue Streams</span>
+            <i className="fas fa-money-bill-wave" data-tip={CANVAS_ITEM_DATA.revenue_stream} />
+            <ContentEditable className="content-info" onChange={(event) => {
               this.changeData("revenue_stream", event);
             }} html={revenue_stream} />
-              </div>
-              </section>
-              <section className="save-section">
-              <button onClick={this.generateURL} className="btn-save">Save</button>
-              {savedURL ?
-                [<label>Share URL:</label>,
-                  <input type="text" className="save-url-input" value={savedURL} onFocus={this.handleFocus} />] : null
-              }
-              <div className="contact-link-container">
-              You can contact me <a href="https://www.linkedin.com/in/christian-poputea-0a3b49122"
-              className="contact-link">here</a>.
-              </div>
-              </section>
-              </div>
-              );
-            }
-            }
+          </div>
+        </section>
+        <section className="save-section">
+          <button onClick={this.generateURL} className="btn-save">Save</button>
+          {savedURL ?
+            [<label>Share URL:</label>,
+              <input type="text" className="save-url-input" value={savedURL} onFocus={this.handleFocus} />] : null
+          }
+          <div className="contact-link-container">
+            You can contact me <a href="https://www.linkedin.com/in/christian-poputea-0a3b49122"
+                                  className="contact-link" target="_blank">here</a>.
+            <span className="learn-more">
+              Learn more about this&nbsp;
+              <a className="contact-link" target="_blank"
+                 href="https://strategyzer.com/canvas/business-model-canvas">here</a>.
+            </span>
+          </div>
+        </section>
+      </div>
+    );
+  }
+}
 
-            export default App;
+export default App;
