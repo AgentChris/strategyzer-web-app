@@ -1,0 +1,175 @@
+.key-partners {
+  grid-area: key-partners;
+}
+
+.key-activities {
+  grid-area: key-activities;
+}
+
+.key-resources {
+  grid-area: key-resources;
+}
+
+.value-proposition {
+  grid-area: value-proposition;
+}
+
+.customer-relationship {
+  grid-area: customer-relationship;
+}
+
+.customer-segments {
+  grid-area: customer-segments;
+}
+
+.channels {
+  grid-area: channels;
+}
+
+.value-proposition {
+  grid-area: value-proposition;
+}
+
+.cost-structure {
+  grid-area: cost-structure;
+}
+
+.revenue-streams {
+  grid-area: revenue-streams;
+}
+
+.canvas-item {
+  padding: 15px;
+  border: 2px solid #000;
+}
+
+.title {
+  display: inline-block;
+  flex: auto;
+}
+
+.content-info {
+  padding: 5px;
+  margin-top: 10px;
+  overflow-y: auto;
+  outline: none;
+  height: calc(100% - 50px);
+  &:hover {
+    border: .0008em solid rgba(0, 0, 0, 0.5);
+  }
+}
+
+$large-screen-row-height: 350px;
+$medium-screen-row-height: 300px;
+$small-screen-row-height: 200px;
+$medium-screen-width: 1024px;
+$small-screen-width: 650px;
+body {
+  background: #EEEEEF;
+  padding: 50px 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+}
+
+.header-container {
+  display: inline;
+  margin-top: 20px;
+}
+
+.label {
+  position: relative;
+  top: -10px;
+}
+
+.header-input {
+  display: inline-block;
+  background: #fff;
+  border: 2px solid #EEEEEF;
+  border-radius: 5%;
+  padding: 10px 5px 5px 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  & input {
+    position: relative;
+    top: -9px;
+    border: none;
+    font-size: 16px;
+    margin-left: 10px;
+    height: 30px;
+  }
+}
+
+.version {
+  input {
+    max-width: 50px;
+  }
+}
+
+.design-input input {
+  max-width: 100px;
+}
+
+.date {
+  input {
+    max-width: 90px;
+  }
+}
+
+.label {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.container {
+  background: #fff;
+  border: 5px solid #000;
+  max-width: 1300px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(3, $large-screen-row-height);
+  grid-template-areas: "key-partners key-partners key-activities key-activities value-proposition value-proposition customer-relationship customer-relationship customer-segments customer-segments" "key-partners key-partners key-resources key-resources value-proposition value-proposition channels channels customer-segments customer-segments" "cost-structure cost-structure cost-structure cost-structure cost-structure revenue-streams revenue-streams revenue-streams revenue-streams revenue-streams";
+}
+
+@media (max-width: $medium-screen-width) {
+  .container {
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(7, $medium-screen-row-height);
+    grid-template-areas: "key-partners key-partners" "key-activities key-resources" "value-proposition value-proposition" "customer-relationship channels" "customer-segments customer-segments" "cost-structure cost-structure" "revenue-streams revenue-streams";
+  }
+  .header {
+    flex-direction: column;
+  }
+  .header-input{
+  }
+  .header-container {
+    margin-left: -10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    //flex-direction: row;
+    & input {
+      width: 100%;
+      max-width: calc(100% - 120px);
+    }
+  }
+}
+
+@media (max-width: $small-screen-width) {
+  .header-container {
+    flex-direction: column;
+  }
+  .container {
+    grid-template-columns: 100%;
+    grid-template-rows: $small-screen-row-height*2 repeat(2, $small-screen-row-height) 2*$small-screen-row-height repeat(2, $small-screen-row-height) repeat(3, 2*$small-screen-row-height);
+    grid-template-areas: "key-partners" "key-activities" "key-resources" "value-proposition" "customer-relationship" "channels" "customer-segments" "cost-structure" "revenue-streams";
+  }
+}
