@@ -216,3 +216,13 @@ body {
 .contact-link:hover {
   color: rgba(0, 0, 0, 0.51);
 }
+
+.canvas-item {
+  position: relative;
+}
+
+.fas {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
