@@ -6,7 +6,17 @@ function getQueryStringValue(key) {
   return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
 }
 
-function getTodayString(){
+function encodeQueryString(obj) {
+  var str = [];
+  for (var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+
+
+function getTodayString() {
   // return Example dd/mm/yyyy
   let today = new Date();
   let dd = today.getDate();
@@ -46,9 +56,12 @@ class App extends Component {
 
   componentDidMount() {
     const new_state = {};
+
     Object.keys(this.state).forEach((key) => {
       new_state[key] = getQueryStringValue(key) || this.state[key];
     });
+
+    delete new_state['savedURL'];
     this.setState({ ...new_state });
   }
 
@@ -56,25 +69,19 @@ class App extends Component {
   generateURL = () => {
     let savedURL = new URL(window.location);
 
-    Object.keys(this.state).forEach((key) => {
-      savedURL.searchParams.append(key, this.state[key]);
-    });
+    delete this.state['savedURL'];
+    savedURL.search = encodeQueryString(this.state);
+    sessionStorage.setItem("history_" + this.state.version, savedURL);
 
     this.setState({ savedURL });
   };
 
   changeData = (key, event) => {
-    this.setState({ [key]: event.target.value });
-
-    // update query params
-    let searchParams = new URLSearchParams(window.location.search);
-
-    Object.keys(this.state).forEach((key) => {
-      searchParams.set(key, this.state[key]);
+    this.setState({ [key]: event.target.value },()=>{
+      // update query params
+      const newRelativePathQuery = window.location.pathname + '?' + encodeQueryString(this.state);
+      window.history.pushState(null, '', newRelativePathQuery);
     });
-
-    var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
-    window.history.pushState(null, '', newRelativePathQuery);
   };
 
   handleFocus = (event) => {
