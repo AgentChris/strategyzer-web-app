@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/strategyzer-web-app/precache-manifest.72bfcecb1c6f67febc034cc20062007b.js"
+  "/strategyzer-web-app/precache-manifest.1d57f248b4974f67d805c654217d2887.js"
 );
 
 workbox.clientsClaim();
