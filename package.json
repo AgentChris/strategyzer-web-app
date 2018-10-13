@@ -1,6 +1,7 @@
 {
   "name": "strategyzer-web-app",
   "version": "0.1.0",
+  "homepage": "https://agentchris.github.io/strategyzer-web-app",
   "private": true,
   "dependencies": {
     "node-sass": "^4.9.3",
