@@ -71,7 +71,7 @@ class App extends Component {
 
     delete this.state['savedURL'];
     savedURL.search = encodeQueryString(this.state);
-    sessionStorage.setItem("history_" + this.state.version, savedURL);
+    localStorage.setItem("history_" + this.state.version, savedURL);
 
     this.setState({ savedURL });
   };
