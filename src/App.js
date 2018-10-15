@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 import ContentEditable from 'react-contenteditable'
 import ReactTooltip from 'react-tooltip'
 import './App.scss';
@@ -77,6 +78,9 @@ class App extends Component {
 
     delete new_state['savedURL'];
     this.setState({ ...new_state });
+
+    ReactGA.initialize('UA-120608794-3');
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
 
 
@@ -95,6 +99,10 @@ class App extends Component {
       // update query params
       const newRelativePathQuery = window.location.pathname + '?' + encodeQueryString(this.state);
       window.history.pushState(null, '', newRelativePathQuery);
+    });
+    ReactGA.event({
+      category: 'saveURL',
+      action: 'save url'
     });
   };
 
